@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: my-security-admin-demo
+  datasource:
+    druid:
+      url: jdbc:mysql://192.168.101.65:3306/mic_service_test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: mysql
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 192.168.101.65
+    port: 6379
+    password: 123456
+    database: 0 #redis服务启动默认有16个服务器，这里选择0号服务器，可在配置文件中修改 /database 16
+    jedis:
+      #Redis连接池配置
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: 1ms #连接池最大阻塞时间
+        max-idle: 4 #连接池最大空闲连接
+        min-idle: 0 #连接池最小空闲连接
+    lettuce:
+      #Lettcue连接池配置
+      pool:
+        max-active: 8 #最大连接数
+        max-wait: 1ms #连接池最大阻塞时间
+        max-idle: 4 #连接池最大空闲连接
+        min-idle: 0 #连接池最小空闲连接
+
+#加密Key盐
+token.securityKey: qfjava
+#过期时间单位天
+token.securityExp: 7
